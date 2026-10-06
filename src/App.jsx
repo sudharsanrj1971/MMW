@@ -19,10 +19,19 @@ function App() {
   const bgRef = useRef(null);
 
   useEffect(() => {
-    // Check if intro has been viewed in this session
-    const seen = sessionStorage.getItem('mmw_intro_seen');
-    if (seen) {
-      setBootCompleted(true);
+    // Force replay if URL contains ?replay=true
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('replay') === 'true') {
+      sessionStorage.removeItem('mmw_intro_seen');
+      // Clean url parameter silently without reloading
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    } else {
+      // Check if intro has been viewed in this session
+      const seen = sessionStorage.getItem('mmw_intro_seen');
+      if (seen) {
+        setBootCompleted(true);
+      }
     }
 
     // Initialize butter-smooth Lenis scrolling with Parallax tracking
