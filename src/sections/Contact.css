@@ -1,0 +1,382 @@
+/* Contact Section Styles with Temple Transparency and Larger Typography */
+.showroom-contact {
+  position: relative;
+  padding: 9rem 2.5rem 7rem;
+  background-color: rgba(5, 4, 3, 0.40);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  overflow: hidden;
+  border-top: 1px solid rgba(200, 155, 74, 0.12);
+}
+
+.contact-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.contact-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: stretch;
+}
+
+/* Left Card */
+.contact-info-card {
+  background: rgba(12, 9, 6, 0.62);
+  border: 1.5px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  height: 100%;
+}
+
+.contact-card-header {
+  margin-bottom: 2.2rem;
+}
+
+.info-tag {
+  display: inline-block;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+
+.foundry-name {
+  font-family: var(--font-heading);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--ivory);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+  text-transform: none;
+}
+
+.foundry-motto {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+}
+
+.contact-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.meta-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.4rem;
+}
+
+.meta-icon-frame {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(200, 155, 74, 0.12);
+  border: 1.5px solid var(--gold-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(200, 155, 74, 0.2);
+}
+
+.meta-label {
+  display: block;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 0.45rem;
+}
+
+.meta-value {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--ivory);
+  line-height: 1.6;
+}
+
+.phone-anchors {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.phone-link {
+  font-family: var(--font-ui);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.phone-link:hover {
+  color: var(--gold-bright);
+  transform: translateX(2px);
+}
+
+.phone-sep {
+  color: var(--text-muted);
+}
+
+.contact-quick-actions {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.whatsapp-green {
+  border-color: rgba(37, 211, 102, 0.5) !important;
+  color: #25D366 !important;
+}
+
+.whatsapp-green:hover {
+  background: rgba(37, 211, 102, 0.15) !important;
+  border-color: #25D366 !important;
+}
+
+/* Right Card */
+.contact-form-card {
+  background: rgba(12, 9, 6, 0.62);
+  border: 1.5px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  height: 100%;
+}
+
+.form-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+}
+
+.form-card-sub {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.2rem;
+}
+
+.direct-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4.5rem 2rem;
+  gap: 1.2rem;
+}
+
+.contact-success-state h4 {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.contact-success-state p {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+}
+
+/* Location View Section */
+.location-view-section {
+  margin-top: 4rem;
+  background: rgba(12, 9, 6, 0.62);
+  border: 1.5px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 2.2rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.location-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.loc-title-group {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.loc-heading {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+  text-transform: none;
+}
+
+.loc-sub {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.embedded-map-frame {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid rgba(200, 155, 74, 0.25);
+  background: #000;
+}
+
+.embedded-map-frame iframe {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 1080px) {
+  .showroom-contact {
+    padding: 5rem 1.5rem 4rem;
+  }
+  .contact-main-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 2.2rem 1.8rem;
+  }
+
+  .location-view-section {
+    padding: 1.8rem 1.4rem;
+  }
+
+  .location-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .showroom-contact {
+    padding: 3.5rem 1rem 3rem;
+  }
+
+  .showroom-contact .section-header-centered {
+    margin-bottom: 2rem;
+  }
+
+  .showroom-contact .section-main-heading {
+    font-size: clamp(1.4rem, 6.5vw, 1.85rem);
+    margin-bottom: 0.6rem;
+  }
+
+  .showroom-contact .section-sub-heading {
+    font-size: clamp(0.9rem, 3.4vw, 1.05rem);
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 1.6rem 1.1rem;
+    border-radius: var(--radius-sm);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .foundry-name {
+    font-size: clamp(1.3rem, 5.5vw, 1.6rem);
+  }
+
+  .contact-quick-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+    box-sizing: border-box;
+  }
+
+  .contact-quick-actions a,
+  .contact-quick-actions button {
+    width: 100%;
+    max-width: 100%;
+    min-height: 48px;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .direct-contact-form {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .direct-contact-form input,
+  .direct-contact-form textarea {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .meta-value {
+    font-size: 0.95rem;
+  }
+
+  .phone-link {
+    font-size: 0.92rem;
+  }
+
+  .direct-contact-form button {
+    width: 100%;
+    max-width: 100%;
+    min-height: 48px;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .location-view-section {
+    margin-top: 2rem;
+    padding: 1.2rem 1rem;
+  }
+
+  .loc-heading {
+    font-size: 1rem;
+  }
+
+  .embedded-map-frame iframe {
+    height: 240px;
+  }
+}

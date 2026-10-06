@@ -1,0 +1,222 @@
+/* Paired Traditional South Indian Temple Bells (Left & Right Symmetrical Framing) */
+.temple-bell-pair-system {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 950;
+}
+
+.single-bell-column {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+  touch-action: none;
+  pointer-events: auto;
+}
+
+.single-bell-column.bell-left {
+  left: 28px;
+}
+
+.single-bell-column.bell-right {
+  right: 28px;
+}
+
+.bell-anchor {
+  transform-origin: top center;
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: filter 0.3s ease;
+  padding-top: 0;
+}
+
+.bell-anchor:active {
+  cursor: grabbing;
+}
+
+/* Authentic Hanging Assembly with Carved Beads (Matching Reference Image) */
+.bell-hanging-assembly {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+.hanging-wire {
+  width: 1.5px;
+  height: 120px;
+  background: linear-gradient(180deg, #F5D78E 0%, #A67C1E 60%, #6B4E12 100%);
+  box-shadow: 0 0 3px rgba(245, 215, 142, 0.4);
+}
+
+.hanging-wire.short {
+  height: 16px;
+}
+
+.bead-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: -1px 0;
+}
+
+.bead-cap {
+  width: 12px;
+  height: 4px;
+  background: linear-gradient(90deg, #808080 0%, #E8E8E8 50%, #808080 100%);
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+
+.bead-carved-main {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #F5D78E 0%, #D4AF37 40%, #7B571E 85%, #3B2605 100%);
+  border: 1px solid #F5D78E;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), inset 0 0 4px rgba(0,0,0,0.5);
+  margin: 1px 0;
+  position: relative;
+}
+
+.bead-carved-main::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  border: 1px dashed rgba(61, 38, 6, 0.6);
+}
+
+.bell-body-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -2px;
+}
+
+.bell-svg {
+  width: 62px;
+  height: 72px;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 14px rgba(212, 175, 55, 0.4));
+  transition: filter 0.3s ease;
+}
+
+.bell-anchor:hover .bell-svg {
+  filter: drop-shadow(0 12px 26px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 24px rgba(245, 215, 142, 0.75));
+}
+
+.bell-ring-pulse {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.is-ringing .bell-ring-pulse {
+  animation: bellRipple 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes bellRipple {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.9;
+    box-shadow: 0 0 25px rgba(200, 155, 74, 0.9);
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Discrete Global Mute Button pinned to bottom-left */
+.bell-global-mute-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  pointer-events: auto;
+  background: rgba(14, 11, 8, 0.75);
+  border: 1px solid rgba(200, 155, 74, 0.3);
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.bell-global-mute-btn:hover {
+  border-color: var(--gold);
+  background: rgba(200, 155, 74, 0.25);
+  transform: scale(1.1);
+}
+
+/* Tablet & Intermediate Responsive (768px - 1080px) */
+@media (max-width: 1080px) {
+  .single-bell-column.bell-left {
+    left: 14px;
+  }
+  .single-bell-column.bell-right {
+    right: 14px;
+  }
+  .hanging-wire {
+    height: 80px;
+  }
+  .bell-svg {
+    width: 50px;
+    height: 60px;
+  }
+  .bell-global-mute-btn {
+    bottom: 16px;
+    left: 16px;
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Mobile Responsive (320px - 640px) */
+@media (max-width: 640px) {
+  .single-bell-column.bell-left {
+    left: 6px;
+    transform: scale(0.65);
+    transform-origin: top left;
+  }
+  .single-bell-column.bell-right {
+    right: 6px;
+    transform: scale(0.65);
+    transform-origin: top right;
+  }
+  .hanging-wire {
+    height: 60px;
+  }
+  /* Ensure bell never blocks touch on mobile content */
+  .single-bell-column {
+    pointer-events: auto;
+    max-width: 44px;
+  }
+}
+
+@media (max-width: 360px) {
+  .single-bell-column.bell-left {
+    left: 2px;
+    transform: scale(0.55);
+  }
+  .single-bell-column.bell-right {
+    right: 2px;
+    transform: scale(0.55);
+  }
+}

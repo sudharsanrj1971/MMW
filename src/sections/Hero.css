@@ -1,0 +1,301 @@
+/* Hero Section Styles with Temple Stage Lighting and Full Uploaded Image */
+.showroom-hero {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  padding: 8rem 4rem 5rem;
+  background-color: #050403;
+}
+
+.hero-bg-media {
+  position: absolute;
+  inset: 0;
+  background-image: url('/hero-lamp-full.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  transform: scale(1.02);
+  transition: transform 0.6s ease-out;
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at 65% 50%, transparent 40%, rgba(5, 4, 3, 0.25) 80%, rgba(5, 4, 3, 0.7) 100%),
+    linear-gradient(90deg, rgba(5, 4, 3, 0.65) 0%, rgba(5, 4, 3, 0.40) 42%, transparent 75%),
+    linear-gradient(180deg, rgba(5, 4, 3, 0.45) 0%, transparent 20%, transparent 80%, rgba(5, 4, 3, 0.65) 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-center-aura {
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 155, 74, 0.25) 0%, transparent 70%);
+  filter: blur(60px);
+  z-index: 2;
+  pointer-events: none;
+  animation: goldPulse 5s infinite ease-in-out;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Hero Content Overlay Panel - Translucent Smoked Glass */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 580px;
+  background: rgba(10, 8, 6, 0.52);
+  border: 1px solid rgba(200, 155, 74, 0.28);
+  padding: 2.8rem 2.4rem;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(200, 155, 74, 0.12);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1.1rem;
+  background: rgba(200, 155, 74, 0.18);
+  border: 1.5px solid var(--gold-border);
+  border-radius: 24px;
+  font-family: var(--font-ui);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--champagne);
+  margin-bottom: 1.6rem;
+  box-shadow: 0 0 20px rgba(200, 155, 74, 0.2);
+}
+
+.badge-spark {
+  color: var(--gold-bright);
+}
+
+.hero-main-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.8vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.05em;
+  color: var(--ivory);
+  margin-bottom: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  word-break: break-word;
+}
+
+.gold-shimmer {
+  background: linear-gradient(135deg, #FFFFFF 0%, var(--gold-bright) 45%, var(--brass) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 1.25vw, 1.3rem);
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-bottom: 2.2rem;
+}
+
+.hero-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.hero-cta-buttons button {
+  flex: 1 1 auto;
+  white-space: nowrap;
+  justify-content: center;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  min-height: 46px;
+  background: rgba(200, 155, 74, 0.08);
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(200, 155, 74, 0.35);
+  cursor: pointer;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.4s var(--transition-smooth);
+  text-align: center;
+}
+
+.btn-ghost:hover {
+  background: rgba(200, 155, 74, 0.18);
+  border-color: var(--gold);
+  color: var(--gold-bright);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(200, 155, 74, 0.25);
+}
+
+/* Scroll Hint */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.hero-scroll-hint:hover {
+  opacity: 1 !important;
+  transform: translateX(-50%) translateY(2px);
+}
+
+.scroll-hint-text {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.scroll-indicator-line {
+  width: 2px;
+  height: 32px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-dot-anim {
+  width: 2px;
+  height: 12px;
+  background-color: var(--gold-bright);
+  animation: scrollDrop 1.8s infinite ease-in-out;
+}
+
+@keyframes scrollDrop {
+  0% { transform: translateY(-12px); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(32px); opacity: 0; }
+}
+
+@media (max-width: 1080px) {
+  .showroom-hero {
+    padding: 7rem 2rem 4rem;
+    justify-content: center;
+  }
+
+  .hero-content {
+    max-width: 90%;
+    margin-inline: auto;
+    align-items: center;
+    text-align: center;
+    padding: 2.5rem 2rem;
+  }
+
+  .hero-cta-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .showroom-hero {
+    padding: 5.5rem 1rem 3rem;
+    min-height: 92vh;
+  }
+
+  .hero-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    padding: 1.6rem 1.1rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .hero-badge {
+    font-size: 0.64rem;
+    letter-spacing: 0.16em;
+    padding: 0.35rem 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-main-title {
+    font-size: clamp(1.55rem, 6.8vw, 2.1rem);
+    line-height: 1.2;
+    margin-bottom: 0.9rem;
+  }
+
+  .hero-description {
+    font-size: clamp(0.88rem, 3.4vw, 1rem);
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+    max-width: 100%;
+  }
+
+  .hero-cta-buttons {
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+
+  .hero-cta-buttons button {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.8rem;
+  }
+
+  .hero-scroll-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-content {
+    padding: 1.2rem 0.85rem;
+  }
+
+  .hero-main-title {
+    font-size: 1.45rem;
+  }
+}
