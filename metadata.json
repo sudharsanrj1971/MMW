@@ -1,0 +1,8 @@
+{
+  "name": "Manish Metal Works",
+  "description": "Handcrafted South Indian brass Kuthu Vilakku from Nachiyar Kovil, Kumbakonam. Custom light lamps made to order.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

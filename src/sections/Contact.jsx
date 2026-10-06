@@ -1,27 +1,43 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, MapPin, MessageSquare, Send, CheckCircle2, Navigation, ExternalLink, User } from 'lucide-react';
-import { openWhatsApp } from '../lib/whatsapp';
+import { openWhatsApp, normalizeIndianPhone } from '../lib/whatsapp';
 import './Contact.css';
 
 const Contact = () => {
   const [formState, setFormState] = useState({ name: '', phone: '', message: '' });
   const [sent, setSent] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
+
+  const validatePhone = () => {
+    if (!formState.phone) {
+      setPhoneError('Phone number is required');
+      return false;
+    }
+    if (formState.phone.length !== 10) {
+      setPhoneError('Please enter a valid 10-digit mobile number');
+      return false;
+    }
+    setPhoneError('');
+    return true;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validatePhone()) return;
+
     setSent(true);
 
     // Automatically transmit enquiry via WhatsApp
     openWhatsApp({
-      name: formState.name,
-      phone: formState.phone,
+      type: 'contact',
       message: formState.message || 'Showroom Inquiry'
     });
 
     setTimeout(() => {
       setSent(false);
       setFormState({ name: '', phone: '', message: '' });
+      setPhoneError('');
     }, 6000);
   };
 
@@ -136,13 +152,28 @@ const Contact = () => {
 
                 <div className="form-field-group">
                   <label>MOBILE / WHATSAPP NUMBER *</label>
-                  <input
-                    type="tel"
-                    required
-                    placeholder="+91 Mobile number"
-                    value={formState.phone}
-                    onChange={(e) => setFormState({ ...formState, phone: e.target.value })}
-                  />
+                  <div className="phone-input-container">
+                    <span className="phone-prefix">+91</span>
+                    <input
+                      type="tel"
+                      required
+                      maxLength={10}
+                      placeholder="Mobile number"
+                      value={formState.phone}
+                      onChange={(e) => {
+                        let val = e.target.value.replace(/\D/g, '');
+                        if (val.startsWith('0')) {
+                          val = val.substring(1);
+                        } else if (val.startsWith('91') && val.length > 10) {
+                          val = val.substring(2);
+                        }
+                        val = val.slice(0, 10);
+                        setFormState({ ...formState, phone: val });
+                        if (phoneError) setPhoneError('');
+                      }}
+                    />
+                  </div>
+                  {phoneError && <span className="phone-error-msg">{phoneError}</span>}
                 </div>
 
                 <div className="form-field-group">

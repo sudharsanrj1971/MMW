@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Sliders, MessageSquare, Send, CheckCircle2, Ruler, Sparkles } from 'lucide-react';
-import { openWhatsApp } from '../lib/whatsapp';
+import { openWhatsApp, normalizeIndianPhone } from '../lib/whatsapp';
 import './CustomOrders.css';
 
 const CustomOrders = () => {
@@ -16,22 +16,39 @@ const CustomOrders = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [phoneError, setPhoneError] = useState('');
 
   const sizes = ['2.5 Feet', '3.5 Feet', '4.5 Feet', '5.5 Feet', '7.0 Feet', 'Monumental Scale'];
   const finishes = ['Mirror-Buffed Polished Gold', 'Antique Heritage Bronze', 'Matte Temple Satin'];
   const crowns = ['Lotus Petal Crown (Standard)', 'Annam Divine Swan', 'Mayil Sacred Peacock', 'Custom Prabhavali'];
 
+  const validatePhone = () => {
+    if (!formData.phone) {
+      setPhoneError('Phone number is required');
+      return false;
+    }
+    if (formData.phone.length !== 10) {
+      setPhoneError('Please enter a valid 10-digit mobile number');
+      return false;
+    }
+    setPhoneError('');
+    return true;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validatePhone()) return;
+
     setSubmitted(true);
     // Automatic transmission via WhatsApp
     openWhatsApp({
-      name: formData.name || 'Valued Client',
-      phone: formData.phone,
+      type: 'custom',
+      isCustomOrder: true,
       size: formData.size,
       finish: formData.finish,
-      quantity: `${formData.quantity} (Crown: ${formData.crown})`,
-      requirements: formData.requirements || 'Bespoke custom order specifications'
+      crown: formData.crown,
+      quantity: formData.quantity,
+      requirements: formData.requirements
     });
     setTimeout(() => {
       setSubmitted(false);
@@ -44,16 +61,21 @@ const CustomOrders = () => {
         quantity: '1',
         requirements: ''
       });
+      setPhoneError('');
     }, 6000);
   };
 
   const handleWhatsAppEnquiry = () => {
+    // If phone is entered, we can validate it, but since discuss is a direct link, we can just trigger it.
+    // If they have selected specifications, pass them over.
     openWhatsApp({
-      name: formData.name || 'Valued Client',
+      type: 'custom',
+      isCustomOrder: true,
       size: formData.size,
       finish: formData.finish,
-      quantity: `${formData.quantity} (Crown: ${formData.crown})`,
-      requirements: formData.requirements || 'Bespoke custom order specifications'
+      crown: formData.crown,
+      quantity: formData.quantity,
+      requirements: formData.requirements
     });
   };
 
@@ -177,13 +199,28 @@ const CustomOrders = () => {
                 <div className="form-field-row">
                   <div className="form-field-group">
                     <label>PHONE / WHATSAPP *</label>
-                    <input
-                      type="tel"
-                      required
-                      placeholder="+91 Mobile number"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    />
+                    <div className="phone-input-container">
+                      <span className="phone-prefix">+91</span>
+                      <input
+                        type="tel"
+                        required
+                        maxLength={10}
+                        placeholder="Mobile number"
+                        value={formData.phone}
+                        onChange={(e) => {
+                          let val = e.target.value.replace(/\D/g, '');
+                          if (val.startsWith('0')) {
+                            val = val.substring(1);
+                          } else if (val.startsWith('91') && val.length > 10) {
+                            val = val.substring(2);
+                          }
+                          val = val.slice(0, 10);
+                          setFormData({ ...formData, phone: val });
+                          if (phoneError) setPhoneError('');
+                        }}
+                      />
+                    </div>
+                    {phoneError && <span className="phone-error-msg">{phoneError}</span>}
                   </div>
                   <div className="form-field-group">
                     <label>QUANTITY</label>
